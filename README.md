@@ -1,11 +1,18 @@
 # dcoll
 Distributed collections for JDG
 
-##
+* DistributedOneToMany
+* TODO DistributedSearchableList
+
+## DistributedOneToMany
+
+Distributed OneToMany is useful for managing huge size one to many relation data on JDG.
+It divide many data into distributed bucket.
+This structure is suitable for Distribute Excetution.
 
 ```java
-class MyDHMBucket extends DHMBucket<String, String, String> { // Define your DHMBucket definition.
-    public TestDHMBucket(Cache cache) { super(cache); }
+class MyOneToMany extends DistributedOneToMany<String, String, String> { // Define your definition.
+    public MyOneToMany(Cache cache) { super(cache); }
     public int getMaxBucketSize() { return 500; }
     public int getMinCompactionBucketSize() { return 100; }
     public long getTransferExpireMills() { return 30000; }
@@ -14,7 +21,7 @@ class MyDHMBucket extends DHMBucket<String, String, String> { // Define your DHM
 DefaultCacheManager manager = new ----
 
 AdvancedCache cache = manager.getCache("myDistCache").getAdvancedCache();
-MyDHMBucket tb = new MyDHMBucket(cache);  
+MyOneToMany tb = new MyOneToMany(cache);  
 
 cache.lock("FirstKey1");
 tb.put("FirstKey1", "SecondKey1-1", "data1-1");
