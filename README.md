@@ -8,7 +8,7 @@ Distributed collections for JDG
 
 Distributed OneToMany is useful for managing huge size one to many relational data on JDG.  
 It divide many data into distributed bucket.  
-This structure is suitable for Distribute Excetution.  
+This structure is suitable for [Distributed Execution](https://www.github.com).  
 
 ```java
 class MyOneToMany extends DistributedOneToMany<String, String, String> { // Define your definition.
